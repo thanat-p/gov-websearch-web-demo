@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  gov-websearch-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: gov-websearch-web:latest
+    container_name: gov-websearch-web
+    env_file:
+      - .env
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
+      - OPENWEBUI_API_KEY=${OPENWEBUI_API_KEY}
+    restart: always
